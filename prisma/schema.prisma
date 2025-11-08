@@ -22,9 +22,9 @@ model folder {
   path      String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  parent    folder?   @relation("SubFolders", fields: [parentId], references: [id])
+  parent    folder?   @relation("SubFolders", fields: [parentId], references: [id], onDelete: Cascade)
   children  folder[]  @relation("SubFolders")
-  files     file[]
+  files     file[]    @relation("FolderFiles")
 }
 
 model file {
@@ -39,5 +39,5 @@ model file {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  folder folder @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  folder folder @relation("FolderFiles", fields: [folderId], references: [id], onDelete: Cascade)
 }
