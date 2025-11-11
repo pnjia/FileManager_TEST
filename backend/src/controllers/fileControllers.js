@@ -21,3 +21,18 @@ export const deleteFile = async (req, res) => {
     return errorResponse(res, status, "Gagal menghapus file", err.message);
   }
 };
+
+export const renameFile = async (req, res) => {
+  try {
+    const renamedFile = await fileServices.renameFile(req, res);
+    return successResponse(
+      res,
+      200,
+      "File berhasil diganti namanya",
+      renamedFile
+    );
+  } catch (err) {
+    const status = err?.status || 500;
+    return errorResponse(res, status, "Gagal mengganti nama file", err.message);
+  }
+};

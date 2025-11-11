@@ -13,7 +13,8 @@ export const uploadFile = async (req, res) => {
       displayName: file.originalname,
       mime: file.mimetype,
       size: file.size,
-      storagePath: file.path,
+      storagePath: `/images/${file.filename}`,
+      thumbnailPath: `/images/${file.filename}`,
     },
   });
   return newFile;
@@ -42,4 +43,23 @@ export const deleteFile = async (req, res) => {
 
   const deleted = await prisma.file.delete({ where: { id: Number(id) } });
   return deleted;
+};
+
+export const renameFile = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  const file = await prisma.file.findUnique({ where: { id: Number(id) } });
+  if (!file) {
+    const err = new Error("File tidak ditemukan");
+    err.status = 404;
+    throw err;
+  }
+
+  const updatedFile = await prisma.file.update({
+    where: { id: file.id },
+    data: { displayName: name },
+  });
+
+  return updatedFile;
 };
