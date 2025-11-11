@@ -38,7 +38,11 @@ export const renameFolder = async (req, res) => {
   const { name } = req.body;
 
   const folder = await prisma.folder.findUnique({ where: { id: Number(id) } });
-  if (!folder) return res.status(404).json({ message: "Folder not found" });
+  if (!folder) {
+    const err = new Error("Folder not found");
+    err.status = 404;
+    throw err;
+  }
 
   const oldPath = folder.path;
 
@@ -57,21 +61,18 @@ export const renameFolder = async (req, res) => {
 
   await updateChildPaths(folder.id, oldPath, newPath);
 
-  if (fs.existsSync(oldPath)) {
-    fs.renameSync(oldPath, newPath);
-  }
-
   return updatedFolder;
 };
 
 export const deleteFolder = async (req, res) => {
   const { id } = req.params;
   const folder = await prisma.folder.findUnique({ where: { id: Number(id) } });
-  if (!folder) return res.status(404).json({ message: "Folder not found" });
+  if (!folder) {
+    const err = new Error("Folder not found");
+    err.status = 404;
+    throw err;
+  }
 
-  const deleteFolder = await prisma.folder.delete({
-    where: { id: Number(id) },
-  });
-
-  return;
+  const deleted = await prisma.folder.delete({ where: { id: Number(id) } });
+  return deleted;
 };

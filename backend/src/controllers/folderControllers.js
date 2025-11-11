@@ -6,7 +6,8 @@ export const getFolders = async (req, res) => {
     const folders = await folderServices.getFolders(req, res);
     return successResponse(res, 200, "Folders berhasil diambil", folders);
   } catch (error) {
-    return errorResponse(res, 500, "Gagal mengambil folders", error.message);
+    const status = error?.status || 500;
+    return errorResponse(res, status, "Gagal mengambil folders", error.message);
   }
 };
 
@@ -23,9 +24,10 @@ export const getFolderContentById = async (req, res) => {
       files,
     });
   } catch (error) {
+    const status = error?.status || 500;
     return errorResponse(
       res,
-      500,
+      status,
       "Gagal mengambil content folder",
       error.message
     );
@@ -37,7 +39,8 @@ export const createFolder = async (req, res) => {
     const folder = await folderServices.createFolder(req, res);
     return successResponse(res, 201, "Folder berhasil dibuat", folder);
   } catch (error) {
-    return errorResponse(res, 500, "Gagal membuat folder", error.message);
+    const status = error?.status || 500;
+    return errorResponse(res, status, "Gagal membuat folder", error.message);
   }
 };
 
@@ -46,9 +49,10 @@ export const renameFolder = async (req, res) => {
     const folder = await folderServices.renameFolder(req, res);
     return successResponse(res, 200, "Folder berhasil diganti namanya", folder);
   } catch (error) {
+    const status = error?.status || 500;
     return errorResponse(
       res,
-      500,
+      status,
       "Gagal mengganti nama folder",
       error.message
     );
@@ -60,6 +64,7 @@ export const deleteFolder = async (req, res) => {
     const result = await folderServices.deleteFolder(req, res);
     return successResponse(res, 200, "Folder berhasil dihapus", result);
   } catch (error) {
-    return errorResponse(res, 500, "Gagal menghapus folder", error.message);
+    const status = error?.status || 500;
+    return errorResponse(res, status, "Gagal menghapus folder", error.message);
   }
 };
