@@ -100,3 +100,9 @@ cd FileManager_TEST
 
 ## 3. File SQL Data Uji (Test Data)
 [File](https://github.com/pnjia/FileManager_TEST/blob/main/Docs/file.sql)
+
+## NOTE!!
+Jika terjadi network error, coba untuk menjalankan kembali backend nya dengan berhentikan telebih dahulu servernya dengan CTRL+C, kemudian jalankan kembali perintah
+```bash
+npm run dev
+```
