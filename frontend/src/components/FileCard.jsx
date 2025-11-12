@@ -60,7 +60,11 @@ export default function FileCard({
       </div>
       <div className="mt-2 text-center">
         {renaming ? (
-          <div ref={renamingRef}>
+          <div
+            ref={renamingRef}
+            className="flex flex-col gap-2"
+            onClick={(e) => e.stopPropagation()}
+          >
             <input
               autoFocus
               type="text"
@@ -68,17 +72,36 @@ export default function FileCard({
               onChange={(e) => setRenameValue(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleRenameSubmit();
-                if (e.key === "Escape") setRenaming(false);
+                if (e.key === "Escape") {
+                  setRenaming(false);
+                  setRenameValue(file.displayName || file.filename);
+                }
               }}
-              onBlur={handleRenameSubmit}
               className="w-full px-2 py-1.5 border border-blue-500 rounded-md text-sm bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-              onClick={(e) => e.stopPropagation()}
             />
+            <div className="flex justify-center gap-2 text-sm">
+              <button
+                onClick={handleRenameSubmit}
+                className="px-2 py-1.5 cursor-pointer bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 flex items-center gap-1.5 transition-colors"
+              >
+                <span>{Icons.CHECK}</span>
+                Rename
+              </button>
+              <button
+                onClick={() => {
+                  setRenaming(false);
+                  setRenameValue(file.displayName || file.filename);
+                }}
+                className="px-2 py-1.5 bg-gray-600 cursor-pointer text-gray-200 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 flex items-center gap-1.5 transition-colors"
+              >
+                <span>{Icons.CLOSE}</span>
+                Cancel
+              </button>
+            </div>
           </div>
         ) : (
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 flex-grow min-w-0">
-              <span className="text-lg text-gray-400">{Icons.IMAGE}</span>
               <span className="text-sm truncate text-gray-300 flex-shrink">
                 {file.displayName || file.filename}
               </span>
@@ -96,8 +119,9 @@ export default function FileCard({
               {menuOpen && (
                 <div className="absolute top-full right-0 mt-1 bg-gray-700 border border-gray-600 rounded-md shadow-xl z-50 text-sm min-w-max">
                   <button
-                    className="w-full text-left px-4 py-2 flex items-center gap-3 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors"
-                    onClick={() => {
+                    className="w-full cursor-pointer text-left px-4 py-2 flex items-center gap-3 hover:bg-gray-600 text-gray-300 hover:text-white transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
                       setMenuOpen(false);
                       setRenaming(true);
                     }}
@@ -106,8 +130,9 @@ export default function FileCard({
                     Rename
                   </button>
                   <button
-                    className="w-full text-left px-4 py-2 flex items-center gap-3 hover:bg-red-900 text-red-400 hover:text-red-300 transition-colors"
-                    onClick={() => {
+                    className="w-full cursor-pointer text-left px-4 py-2 flex items-center gap-3 hover:bg-red-900 text-red-400 hover:text-red-300 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
                       setMenuOpen(false);
                       onDelete(file);
                     }}

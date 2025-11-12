@@ -10,17 +10,17 @@ export default function FilePreview({ open, url, onClose }) {
       onClick={onClose}
     >
       <div
-        className="relative bg-gray-800 p-4 rounded-lg shadow-xl max-w-4xl max-h-4/5 border border-gray-600"
+        className="relative bg-gray-800 p-4 rounded-lg shadow-xl max-w-4xl max-h-[80vh] border border-gray-600 flex items-center justify-center overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={url}
           alt="File preview"
-          className="max-w-full max-h-full rounded-md"
+          className="object-contain w-full h-full rounded-md"
         />
         <button
           onClick={onClose}
-          className="absolute top-0 cursor-pointer right-0 -mt-4 -mr-4 rounded-full w-10 h-10 flex items-center justify-center bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
+          className="absolute cursor-pointer top-2 right-2 rounded-full w-8 h-8 flex items-center justify-center bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
         >
           <span className="text-lg">{Icons.CLOSE}</span>
         </button>

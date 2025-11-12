@@ -76,7 +76,7 @@ function App() {
       await fetchFolders();
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to create folder");
+      alert(err.message || "Gagal Membuat Folder");
     } finally {
       setCreatingParent(undefined);
     }
@@ -88,7 +88,7 @@ function App() {
       await fetchFolders();
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to rename folder");
+      alert(err.message || "Gagal mengganti nama folder");
     }
   };
 
@@ -100,7 +100,7 @@ function App() {
       setFiles([]);
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to delete folder");
+      alert(err.message || "Gagal Menghapus folder");
     }
   };
 
@@ -115,7 +115,7 @@ function App() {
       if (selectedFolder) await selectFolder(selectedFolder);
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to upload file");
+      alert(err.message || "Gagal mengupload gambar");
     }
   };
 
@@ -129,7 +129,7 @@ function App() {
       if (selectedFolder) await selectFolder(selectedFolder);
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to delete file");
+      alert(err.message || "Gagal menghapus gambar");
     }
   };
 
@@ -139,7 +139,7 @@ function App() {
       if (selectedFolder) await selectFolder(selectedFolder);
     } catch (err) {
       console.error(err);
-      alert(err.message || "Failed to rename file");
+      alert(err.message || "Gagal Mengganti Nama Gambar");
     }
   };
 
@@ -209,7 +209,8 @@ function App() {
             <button
               className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium flex items-center gap-2 transition-colors shrink-0"
               onClick={async () => {
-                if (!uploadFileObj) return alert("Choose a file first");
+                if (!uploadFileObj)
+                  return alert("Pilih Gamber Terlebih Dahulu");
                 const form = new FormData();
                 form.append("file", uploadFileObj);
                 form.append("folderId", selectedFolder);
@@ -220,7 +221,7 @@ function App() {
                   setShowUploadPanel(false);
                 } catch (err) {
                   console.error(err);
-                  alert(err.message || "Failed to upload file");
+                  alert(err.message || "Gagal Mengupload Gambar");
                 }
               }}
             >
@@ -272,9 +273,8 @@ function App() {
         {/* Right Panel - Files */}
         <main className="flex-1 bg-gray-900 flex flex-col overflow-hidden">
           <div className="bg-linear-to-r from-gray-800 to-gray-900 border-b border-gray-700 px-6 py-3 flex items-center gap-2 shrink-0">
-            <span className="text-2xl">{Icons.IMAGE}</span>
             <h2 className="text-sm font-bold text-gray-300 uppercase tracking-widest">
-              {files.length} {files.length === 1 ? "Item" : "Items"}
+              {files.length} Gambar
             </h2>
           </div>
           <div className="flex-1 overflow-y-auto overflow-x-hidden">
