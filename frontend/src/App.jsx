@@ -249,7 +249,7 @@ function App() {
               Folders
             </h2>
             <button
-              className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-semibold flex items-center gap-1 transition-colors"
+              className="px-3 py-1 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-semibold flex items-center gap-1 transition-colors"
               onClick={() => startCreateFolder(null)}
               title="Add new root folder"
             >

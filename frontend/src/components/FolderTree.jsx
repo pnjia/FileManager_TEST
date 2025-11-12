@@ -273,13 +273,13 @@ export default function FolderTree({
         />
         <div className="flex gap-2 mt-2">
           <button
-            className="px-3 py-1.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center gap-1.5"
+            className="px-3 py-1.5 cursor-pointer bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center gap-1.5"
             onClick={() => onSubmitCreate(value)}
           >
             <span>{Icons.CHECK}</span> Create
           </button>
           <button
-            className="px-3 py-1.5 bg-gray-600 text-gray-200 rounded-md hover:bg-gray-700 flex items-center gap-1.5"
+            className="px-3 py-1.5 cursor-pointer bg-gray-600 text-gray-200 rounded-md hover:bg-gray-700 flex items-center gap-1.5"
             onClick={() => onCancelCreate()}
           >
             <span>{Icons.CLOSE}</span> Cancel
