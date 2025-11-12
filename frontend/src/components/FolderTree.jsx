@@ -187,6 +187,7 @@ const FolderNode = ({
                 className="w-full cursor-pointer text-left px-3 py-2 flex items-center gap-2 hover:bg-gray-600 text-gray-300 hover:text-white"
                 onClick={() => {
                   setMenuOpen(false);
+                  setOpen(true);
                   onStartCreate(node);
                 }}
               >
