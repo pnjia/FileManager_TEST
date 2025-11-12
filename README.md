@@ -26,7 +26,10 @@ Aplikasi ini dibangun menggunakan arsitektur client-server dengan teknologi beri
 ```bash
 git clone https://github.com/pnjia/FileManager_TEST cd FileManager_TEST
 ```
-
+lalu 
+```bash
+cd FileManager_TEST
+```
 ### Prasyarat
 
 - Node.js (v18 atau lebih baru)
