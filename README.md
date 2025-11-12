@@ -55,12 +55,14 @@ cd FileManager_TEST
 
     ```env
     DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
+    PORT=4000
     ```
 
     Contoh:
 
     ```env
     DATABASE_URL="mysql://root:password@localhost:3306/filemanager"
+    PORT=4000
     ```
 
 4.  **Jalankan migrasi database:**
