@@ -20,7 +20,7 @@ export default function FilePreview({ open, url, onClose }) {
         />
         <button
           onClick={onClose}
-          className="absolute top-0 right-0 -mt-4 -mr-4 p-2 rounded-full bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
+          className="absolute top-0 cursor-pointer right-0 -mt-4 -mr-4 rounded-full w-10 h-10 flex items-center justify-center bg-red-600 text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors"
         >
           <span className="text-lg">{Icons.CLOSE}</span>
         </button>

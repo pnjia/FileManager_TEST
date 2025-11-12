@@ -77,9 +77,9 @@ export default function FileCard({
           </div>
         ) : (
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-grow min-w-0">
               <span className="text-lg text-gray-400">{Icons.IMAGE}</span>
-              <span className="text-sm truncate text-gray-300">
+              <span className="text-sm truncate text-gray-300 flex-shrink">
                 {file.displayName || file.filename}
               </span>
             </div>
@@ -89,7 +89,7 @@ export default function FileCard({
                   e.stopPropagation();
                   setMenuOpen(!menuOpen);
                 }}
-                className="p-1.5 rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 hover:text-gray-200 transition-colors"
+                className="p-1.5 cursor-pointer rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-400 hover:text-gray-200 transition-colors"
               >
                 {Icons.MENU}
               </button>
