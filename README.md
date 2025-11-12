@@ -89,3 +89,4 @@ Aplikasi ini dibangun menggunakan arsitektur client-server dengan teknologi beri
     ```
 
 ## 3. File SQL Data Uji (Test Data)
+[File](https://github.com/pnjia/FileManager_TEST/blob/main/Docs/file.sql)
